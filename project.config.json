@@ -1,0 +1,22 @@
+{
+	"miniprogramRoot": "client/dist/",
+	"cloudfunctionRoot": "cloud/functions/",
+	"projectname": "WechatProgram0",
+	"description": "WechatProgram",
+	"appid": "wx59554c9745ac25db",
+	"setting": {
+		"urlCheck": true,
+		"es6": false,
+		"postcss": false,
+		"minified": false,
+		"newFeature": true,
+		"nodeModules": false,
+		"autoAudits": false,
+		"checkInvalidKey": true
+	},
+	"compileType": "miniprogram",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
+	"condition": {}
+}
