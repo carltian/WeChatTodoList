@@ -5,6 +5,7 @@ import './index.less'
 export default class index extends Component {
     config = {
         navigationBarTitleText: 'Rui❤Tian TodoList',
+        enablePullDownRefresh: true
       }
     state = {
         // todoList: 'hello let us do it !!',
@@ -32,6 +33,7 @@ export default class index extends Component {
             });
         this.getTodeList(false);
     }
+
     add = () => {
         const { nickName, boyName, girlName } = this.state;
         if (nickName === boyName || nickName === girlName) {
@@ -43,9 +45,18 @@ export default class index extends Component {
             })
         } 
     }
+
     cancel = () => {
         this.setState({ addShow: false });
     }
+
+    onPullDownRefresh() {
+        // 下拉刷新
+        this.getTodeList(false)
+        // 处理完成后，终止下拉刷新
+        
+    }
+
     formSubmit = e => {
         console.log(e.detail.value.content);
         const { detail } = e;
@@ -190,6 +201,7 @@ export default class index extends Component {
         });
     }
     getTodeList = (done) => {
+        Taro.showNavigationBarLoading();
         Taro.cloud.callFunction({
             // 要调用的云函数名称
             name: 'getList',
@@ -204,6 +216,8 @@ export default class index extends Component {
             this.setState({
                 tableList: data,
             });
+            Taro.hideNavigationBarLoading();
+            Taro.stopPullDownRefresh();
             console.log('查询', res);
         }).catch(err => {
             console.log(err);
@@ -349,7 +363,7 @@ export default class index extends Component {
                             </View>
                             <View className='btnArea' style='left:8%'>
                                 <Button form-type='submit' type='primary'>确定</Button>
-                                <Button onClick={this.listCancel} plain style='margin-left:10rpx;'>取消</Button>
+                                <Button onClick={this.listCancel} plain style='margin-left:10rpx;'>返回</Button>
                             </View>
                         </Form>
                 )               

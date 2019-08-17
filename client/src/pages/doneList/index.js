@@ -4,7 +4,8 @@ import './index.less'
 
 export default class index extends Component {
     config = {
-        navigationBarTitleText: 'Rui❤Tian TodoList'
+        navigationBarTitleText: 'Rui❤Tian TodoList',
+        enablePullDownRefresh: true
       }
     state = {
         // todoList: 'hello let us do it !!',
@@ -36,6 +37,14 @@ export default class index extends Component {
     cancel = () => {
         this.setState({ addShow: false });
     }
+
+    onPullDownRefresh() {
+        // 下拉刷新
+        this.getTodeList(true);
+        // 处理完成后，终止下拉刷新
+
+      }
+
     getSingleContent = (id) => {
         Taro.cloud.callFunction({
             // 要调用的云函数名称
@@ -67,6 +76,7 @@ export default class index extends Component {
     // console.log(e)
     // }
     getTodeList = (done) => {
+        Taro.showNavigationBarLoading();
         Taro.cloud.callFunction({
             // 要调用的云函数名称
             name: 'getList',
@@ -81,6 +91,8 @@ export default class index extends Component {
             this.setState({
                 tableList: data,
             });
+            Taro.hideNavigationBarLoading();
+            Taro.stopPullDownRefresh();
             console.log('查询', res);
         }).catch(err => {
             console.log(err);
@@ -189,7 +201,7 @@ export default class index extends Component {
                                   onClick={this.cancel}
                                   plain style='position:absolute;bottom:5%;left:20%;width:300rpx;'
                                 >
-                                确定
+                                返回
                                 </Button>
                             {/* </View> */}
                         </Form>
