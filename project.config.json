@@ -1,7 +1,7 @@
 {
 	"miniprogramRoot": "client/dist/",
 	"cloudfunctionRoot": "cloud/functions/",
-	"projectname": "WechatProgram0",
+	"projectname": "WechatTodoList",
 	"description": "WechatProgram",
 	"appid": "wx59554c9745ac25db",
 	"setting": {
