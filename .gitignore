@@ -1,3 +1,2 @@
-*.jpg
 node_modules
-client\src\images
+client/images

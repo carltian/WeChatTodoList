@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Image, Text } from '@tarojs/components'
 import './index.less'
-import imagefirstsrc from "../../images/1.jpg"
+import imagefirstsrc from '../../images/2.jpg'
 // import Login from '../../components/login'
 
 export default class Index extends Component {
@@ -87,7 +87,7 @@ export default class Index extends Component {
       <View className='index'>
           <View>
             <View className='userLogin'>Rui<Text style='color: red'> ❤ </Text>Tian</View>
-            <View className='imageDiv'><Image style='width:750rpx; height: 680rpx' src={imagefirstsrc}></Image></View>
+            <View className='imageDiv'><Image style='width:700rpx; height: 700rpx' src={imagefirstsrc}></Image></View>
             
             <View>
               <View>
