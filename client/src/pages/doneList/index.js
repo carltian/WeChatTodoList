@@ -1,6 +1,8 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Button, Form, Textarea, ScrollView } from '@tarojs/components'
+import { AtModal } from "taro-ui"
 import './index.less'
+import './index.scss'
 
 export default class index extends Component {
     config = {
@@ -62,6 +64,7 @@ export default class index extends Component {
                 creatDateTime: r.dateTime,
                 doneDateTime: r.doneTime,
                 listName: r.name,
+                addShow: !this.state.addShow
             }); 
             console.log('查询单个内容', res);
         }).catch(err => {
@@ -113,14 +116,9 @@ export default class index extends Component {
     }
 
     clickList = (id) => {
-        this.getSingleContent(id);
         const { nickName, boyName, girlName } = this.state;
         if (nickName === boyName || nickName === girlName) {
-            setTimeout(() => {
-                this.setState({
-                    addShow: !this.state.addShow
-                }), 500
-            });
+            this.getSingleContent(id);
         } else {
             Taro.showToast({
                 title: '抱歉,仅Rui有查看权限',
@@ -184,27 +182,34 @@ export default class index extends Component {
                 </View>
             </ScrollView>
             {
-                addShow && (
-                        <Form className='addContent'>
-                            <View className='textArea'>
-                                <Textarea
-                                  disabled
-                                  style='background:#fff;width:auto;min-height:80px;padding:0 30rpx;border-radius:15rpx;border:1rpx solid rgb(0, 0, 0);'
-                                  autoHeight
-                                  fixed
-                                  maxlength={-1}
-                                  value={target}
-                                />
-                            </View>
-                            {/* <View className='btnArea'> */}
-                                <Button
-                                  onClick={this.cancel}
-                                  plain style='position:absolute;bottom:5%;left:20%;width:300rpx;'
-                                >
-                                返回
-                                </Button>
-                            {/* </View> */}
-                        </Form>
+                 addShow && (
+                         <AtModal
+                           isOpened
+                           cancelText='返回'
+                           onClose={this.cancel}
+                           onCancel={this.cancel}
+                           content={target}
+                         />
+                //         <Form className='addContent'>
+                //             <View className='textArea'>
+                //                 <Textarea
+                //                   disabled
+                //                   style='background:#fff;width:auto;min-height:80px;padding:0 30rpx;border-radius:15rpx;border:1rpx solid rgb(0, 0, 0);'
+                //                   autoHeight
+                //                   fixed
+                //                   maxlength={-1}
+                //                   value={target}
+                //                 />
+                //             </View>
+                //             {/* <View className='btnArea'> */}
+                //                 <Button
+                //                   onClick={this.cancel}
+                //                   plain style='position:absolute;bottom:5%;left:20%;width:300rpx;'
+                //                 >
+                //                 返回
+                //                 </Button>
+                //             {/* </View> */}
+                //         </Form>
                 )               
             }
             </View>

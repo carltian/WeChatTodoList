@@ -69,7 +69,6 @@ export default class index extends Component {
                 })
         } else {
             const dateTime = this.getTodayTime();
-            console.log(e.detail);
             Taro.cloud.callFunction({
                 // 要调用的云函数名称
                 name: 'addTodoList',
@@ -113,6 +112,7 @@ export default class index extends Component {
                 listContent: r.content,
                 listDateTime: r.dateTime,
                 listName: r.name,
+                showContent: !this.state.showContent
             }); 
             console.log('查询单个内容', res);
         }).catch(err => {
@@ -238,14 +238,9 @@ export default class index extends Component {
     }
 
     clickList = (id) => {
-        this.getSingleContent(id);
         const { nickName, boyName, girlName } = this.state;
         if (nickName === boyName || nickName === girlName) {
-            setTimeout(
-                () => { this.setState({
-                    showContent: !this.state.showContent
-                })}, 500
-            );
+            this.getSingleContent(id);
         } else {
             Taro.showToast({
                 title: '抱歉,仅Rui有查看权限',
