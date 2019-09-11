@@ -87,7 +87,7 @@ export default class Index extends Component {
       <View className='index'>
           <View>
             {/* <View className='userLogin'>Rui<Text style='color: red'> ❤ </Text>Tian</View> */}
-            <View className='imageDiv'><Image style='width:700rpx; height: 700rpx' src={imagefirstsrc}></Image></View>
+            <View className='imageDiv'><Image style='width:700rpx; height: 700rpx; border-radius: 6px' src={imagefirstsrc}></Image></View>
             
             <View>
               <View>

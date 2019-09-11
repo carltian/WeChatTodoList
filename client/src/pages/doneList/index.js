@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Button, Form, Textarea, ScrollView } from '@tarojs/components'
+import { View, ScrollView } from '@tarojs/components'
 import { AtModal } from "taro-ui"
 import './index.less'
 import './index.scss'
@@ -7,7 +7,7 @@ import './index.scss'
 export default class index extends Component {
     config = {
         navigationBarTitleText: 'Rui❤Tian TodoList',
-        enablePullDownRefresh: true
+        enablePullDownRefresh: true // 开启下拉刷新功能
       }
     state = {
         // todoList: 'hello let us do it !!',
@@ -44,7 +44,6 @@ export default class index extends Component {
         // 下拉刷新
         this.getTodeList(true);
         // 处理完成后，终止下拉刷新
-
       }
 
     getSingleContent = (id) => {
@@ -147,11 +146,9 @@ export default class index extends Component {
         return (
             <View>
             <View class='date'>
-                {/* <View>完成日期</View> */}
                 <View>完成小❤愿({tableList.length})</View>
                 <View style='padding-left:110rpx;'>记录人</View>
             </View>
-            {/* <View> */}
             <ScrollView
               className='scrollview'
               scrollY
@@ -190,26 +187,6 @@ export default class index extends Component {
                            onCancel={this.cancel}
                            content={target}
                          />
-                //         <Form className='addContent'>
-                //             <View className='textArea'>
-                //                 <Textarea
-                //                   disabled
-                //                   style='background:#fff;width:auto;min-height:80px;padding:0 30rpx;border-radius:15rpx;border:1rpx solid rgb(0, 0, 0);'
-                //                   autoHeight
-                //                   fixed
-                //                   maxlength={-1}
-                //                   value={target}
-                //                 />
-                //             </View>
-                //             {/* <View className='btnArea'> */}
-                //                 <Button
-                //                   onClick={this.cancel}
-                //                   plain style='position:absolute;bottom:5%;left:20%;width:300rpx;'
-                //                 >
-                //                 返回
-                //                 </Button>
-                //             {/* </View> */}
-                //         </Form>
                 )               
             }
             </View>
