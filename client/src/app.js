@@ -12,10 +12,10 @@ class App extends Component {
 
   config = {
     pages: [
-      'pages/login/index',
       'pages/index/index',
       'pages/doneList/index',
       'pages/todoList/index',
+      'pages/login/index',
     ],
     window: {
       backgroundTextStyle: 'light',

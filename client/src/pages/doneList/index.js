@@ -32,8 +32,13 @@ export default class index extends Component {
                 } else {
                     throw new Error('没有用户信息')
                 }
+            })
+            .catch(() => {
+                Taro.redirectTo({
+                    url: '../login/index'
+                })
             });
-        this.getTodeList(true);
+        this.getTodoList(true);
     }
 
     cancel = () => {
@@ -42,7 +47,7 @@ export default class index extends Component {
 
     onPullDownRefresh() {
         // 下拉刷新
-        this.getTodeList(true);
+        this.getTodoList(true);
         // 处理完成后，终止下拉刷新
       }
 
@@ -77,7 +82,7 @@ export default class index extends Component {
     // formReset = e => {
     // console.log(e)
     // }
-    getTodeList = (done) => {
+    getTodoList = (done) => {
         Taro.showNavigationBarLoading();
         Taro.cloud.callFunction({
             // 要调用的云函数名称

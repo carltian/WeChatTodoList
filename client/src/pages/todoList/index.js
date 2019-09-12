@@ -41,8 +41,13 @@ export default class index extends Component {
                 } else {
                     throw new Error('没有用户信息')
                 }
+            })
+            .catch(() => {
+                Taro.redirectTo({
+                    url: '../login/index'
+                })
             });
-        this.getTodeList(false);
+        this.getTodoList(false);
     }
 
     add = () => {
@@ -63,7 +68,7 @@ export default class index extends Component {
 
     onPullDownRefresh() {
         // 下拉刷新
-        this.getTodeList(false)
+        this.getTodoList(false)
         // 处理完成后，终止下拉刷新
         
     }
@@ -100,7 +105,7 @@ export default class index extends Component {
                     icon: "success"
                     })
                 this.setState({ addShow: false });
-                this.getTodeList(false);
+                this.getTodoList(false);
                 console.log('添加', res);
             }).catch(err => {
                 Taro.showToast({
@@ -169,7 +174,7 @@ export default class index extends Component {
                     }
                 })
                 .then((res) =>{
-                    this.getTodeList(false);
+                    this.getTodoList(false);
                     console.log(res);
                 })
                 .then(() => {
@@ -200,7 +205,7 @@ export default class index extends Component {
                         title: `修改成功`,
                         icon: "success"
                         })
-                    this.getTodeList(false);
+                    this.getTodoList(false);
                     this.setState({ showContent: false });
                     console.log(res);
                 }).catch(err => {
@@ -221,7 +226,7 @@ export default class index extends Component {
             showContent: false,
         });
     }
-    getTodeList = (done) => {
+    getTodoList = (done) => {
         Taro.showNavigationBarLoading();
         Taro.cloud.callFunction({
             // 要调用的云函数名称

@@ -1,5 +1,5 @@
 import Taro, { Component } from "@tarojs/taro"
-import { View, Button, Text } from "@tarojs/components"
+import { View, Button } from "@tarojs/components"
 import './index.less'
 
 class Login extends Component {
@@ -49,7 +49,7 @@ class Login extends Component {
           throw new Error('没有授权')
         }
       })
-      .then(res=>{
+      .then(()=>{
         return Taro.getUserInfo();
       })
       .catch(err=>{
@@ -57,13 +57,22 @@ class Login extends Component {
       })
   };
 
+  toIndexPage = () => {
+    Taro.switchTab({
+      url: '../../pages/index/index'
+    })
+  }
+
   render() {
     const { context } = this.state;
     console.log(context);
     return (
       <View className='index'>
-        <Button className='btn' openType='getUserInfo' onGetUserInfo={this.tobegin} type='primary' lang='zh_CN'>
+        <Button className='btn' style='top: 150px' openType='getUserInfo' onGetUserInfo={this.tobegin} type='primary' lang='zh_CN'>
             微信授权
+        </Button>
+        <Button className='btn' style='top: 300px' onClick={this.toIndexPage} type='default' lang='zh_CN'>
+            暂不授权
         </Button>
       </View>
     )
