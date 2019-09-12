@@ -1,12 +1,12 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Button, Text, Radio, RadioGroup, ScrollView } from '@tarojs/components'
-import { AtForm, AtButton, AtTextarea, AtModal, AtModalContent } from 'taro-ui'
+import { View, Text, Radio, RadioGroup, ScrollView } from '@tarojs/components'
+import { AtForm, AtButton, AtTextarea, AtModal, AtModalContent, AtFab } from 'taro-ui'
 import './index.less'
 import './index.scss'
 
 export default class index extends Component {
     config = {
-        navigationBarTitleText: 'Rui❤Tian TodoList',
+        navigationBarTitleText: 'Rui❤Tian',
         enablePullDownRefresh: true
       }
     state = {
@@ -343,7 +343,12 @@ export default class index extends Component {
                 }
             </View>
             </ScrollView>
-            <Button className='addButton' onClick={this.add}><Text style={{ color: 'white' }}>+</Text></Button>
+            <View className='addButton'>
+                <AtFab onClick={this.add} size='small' style='background-color: #f68d91;'>
+                    {/* <Text style={{ color: 'white' }}>+</Text> */}
+                    <Text className='at-fab__icon at-icon at-icon-add'></Text>
+                </AtFab>
+            </View>
             {
                 addShow && (
                     <AtModal
@@ -431,68 +436,6 @@ export default class index extends Component {
                   </AtModal>
                 )               
             }
-            {/* {
-                addShow && (
-                        <Form onSubmit={this.formSubmit} className='addContent'>
-                            <View className='textArea'>
-                                <Textarea
-                                  name='content'
-                                  style='background:#fff;width:100%;min-height:80px;padding:0 30rpx;border-radius:15rpx;border:1rpx solid rgb(0, 0, 0);'
-                                  autoHeight
-                                  placeholder='❤请输入小心愿内容❤'
-                                  autoFocus
-                                  fixed
-                                />
-                            </View>
-                            <View className='dateArea'>
-                                <Text>日期: {this.getTodayTime()}</Text>
-                            </View>
-                            <View className='nameArea'>
-                                <RadioGroup name='name'>
-                                    <Text>记录人: </Text>
-                                    <Radio value='Rui' checked>Rui</Radio>
-                                    <Radio style='margin-left: 20rpx' value='Tian'>Tian</Radio>
-                                </RadioGroup>
-                            </View>
-                            <View className='btnArea'>
-                                <Button form-type='submit' type='primary'>确定</Button>
-                                <Button onClick={this.cancel} plain style='margin-left:10rpx;'>取消</Button>
-                            </View>
-                        </Form>
-                )               
-            } */}
-            {/* {
-                showContent && (
-                        <Form onSubmit={this.contentSubmit} className='addContent' style='height:600rpx'>
-                            <View className='textArea' style='left:8%'>
-                                <Textarea
-                                  name='content'
-                                  style='background:#fff;width:auto;min-height:80px;padding:0 30rpx;border-radius:15rpx;border:1rpx solid rgb(0, 0, 0);'
-                                  autoHeight
-                                  fixed
-                                  value={listContent}
-                                />
-                            </View>
-                            <View className='dateArea' style='left:8%'>
-                                <Text>日期: { listDateTime }</Text>
-                            </View>
-                            <View className='dateArea' style='left:8%'>
-                                    <Text>记录人: { listName }</Text>
-                            </View>
-                            <View className='nameArea' style='left:8%'>
-                                <RadioGroup name='hasDone'>
-                                    <Text>完成情况: </Text>
-                                    <Radio value={0} checked>未完成</Radio>
-                                    <Radio style='margin-left: 20rpx' value={1}>已完成</Radio>
-                                </RadioGroup>
-                            </View>
-                            <View className='btnArea' style='left:8%'>
-                                <Button form-type='submit' type='primary'>确定</Button>
-                                <Button onClick={this.listCancel} plain style='margin-left:10rpx;'>返回</Button>
-                            </View>
-                        </Form>
-                )               
-            } */}
             </View>
         )
     }

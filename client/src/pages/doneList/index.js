@@ -6,7 +6,7 @@ import './index.scss'
 
 export default class index extends Component {
     config = {
-        navigationBarTitleText: 'Rui❤Tian TodoList',
+        navigationBarTitleText: 'Rui❤Tian',
         enablePullDownRefresh: true // 开启下拉刷新功能
       }
     state = {

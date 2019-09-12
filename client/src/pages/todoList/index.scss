@@ -4,7 +4,13 @@
 @import "~taro-ui/dist/style/components/input.scss";
 @import "~taro-ui/dist/style/components/button.scss";
 @import "~taro-ui/dist/style/components/loading.scss";
+@import "~taro-ui/dist/style/components/fab.scss";
+@import "~taro-ui/dist/style/components/icon.scss";
 
 .at-modal__container {
   top: 35%;
 }
+.at-fab--small {
+  background-color: #f68d91;
+}
+  

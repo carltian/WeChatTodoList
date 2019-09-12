@@ -21,9 +21,11 @@ class App extends Component {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: 'WeChat',
-      navigationBarTextStyle: 'black'
+      navigationBarTextStyle: 'black',
     },
     tabBar: {
+      // "color":"#666666",
+      "selectedColor":"#f68d91",
       list: [
         {
           pagePath: 'pages/todoList/index',
