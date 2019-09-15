@@ -142,11 +142,11 @@ export default class index extends Component {
             addShow } = this.state;
         console.log(nickName);
         const scrollStyle = {
-            height: 'auto'
-          }
-        const scrollTop = 0
-        const Threshold = 20
-        const target = `❤❤❤\n${listContent}\n❤❤❤\n创建日期:${ creatDateTime }\n完成日期: ${ doneDateTime }\n记录人: ${ listName }\n完成情况: 👍已完成👍\n❤❤❤`;
+            height: 'auto',
+          };
+        const scrollTop = 0;
+        const Threshold = 20;
+        const target = `❤❤❤\n${listContent}\n❤❤❤\n创建日期:${ creatDateTime }\n完成日期: ${ doneDateTime }\n记录人: ${ listName }\n完成情况: 已完成\n❤❤❤`;
         const winHeight = tableList.length * 100 + 30;
         return (
             <View>
@@ -172,7 +172,7 @@ export default class index extends Component {
                             <View class='item'>
                                 <View class='listContent'>
                                     {item.content}
-                                    <View class='listTime'>{item.dateTime}👍</View>
+                                    <View class='listTime'>{item.dateTime}</View>
                                 </View>
                                 <View class='listName'>{item.name}</View>
                             </View>
